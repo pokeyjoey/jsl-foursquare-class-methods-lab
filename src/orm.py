@@ -6,6 +6,13 @@ def build_from_record(Class, record):
     obj.__dict__ = attr
     return obj
 
+def find(id, Class, cursor):
+    sql_str = f"SELECT * FROM {Class.__table__} where id = {id}"
+    cursor.execute(sql_str)
+    record = cursor.fetchone()
+
+    return build_from_record(Class, record)
+
 def find_all(Class, cursor):
     sql_str = f"SELECT * FROM {Class.__table__}"
     cursor.execute(sql_str)

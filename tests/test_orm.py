@@ -16,6 +16,11 @@ def build_categories():
 
     drop_all_tables(test_conn, test_cursor)
 
+def test_find(build_categories):
+    categories = find_all(Category, test_cursor)
+    category = find(categories[0].id, Category, test_cursor)
+    assert category.name == categories[0].name
+
 def test_find_all(build_categories):
     categories = find_all(Category, test_cursor)
     assert [category.name for category in categories] == ['Taco Places', 'Asian Fusion']
