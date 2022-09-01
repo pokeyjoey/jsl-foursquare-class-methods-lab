@@ -1,0 +1,1 @@
+# jsl-foursquare-class-methods-lab
